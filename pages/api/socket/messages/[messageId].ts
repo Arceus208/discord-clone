@@ -1,4 +1,4 @@
-import { currentProfilePages } from "@/lib/current-profile pages";
+import { currentProfilePages } from "@/lib/current-profile-pages";
 import { db } from "@/lib/db";
 import { NextApiResponseServerIo } from "@/types";
 import { MemberRole } from "@prisma/client";
@@ -61,13 +61,6 @@ export default async function handler(
         .status(404)
         .json({ error: "Server not found" });
     }
-
-    const channel = await db.channel.findFirst({
-      where: {
-        id: channelId as string,
-        serverId: serverId as string,
-      },
-    });
 
     if (!server) {
       return res
